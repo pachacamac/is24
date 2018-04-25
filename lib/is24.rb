@@ -10,9 +10,9 @@ module Is24
   class Api
     include Is24::Logger
 
-    API_ENDPOINT = "http://rest.immobilienscout24.de/restapi/api/search/v1.0/"
-    API_OFFER_ENDPOINT = "http://rest.immobilienscout24.de/restapi/api/offer/v1.0/"
-    API_AUTHORIZATION_ENDPOINT = "http://rest.immobilienscout24.de/restapi/security/"
+    API_ENDPOINT = "https://rest.immobilienscout24.de/restapi/api/search/v1.0/"
+    API_OFFER_ENDPOINT = "https://rest.immobilienscout24.de/restapi/api/offer/v1.0/"
+    API_AUTHORIZATION_ENDPOINT = "https://rest.immobilienscout24.de/restapi/security/"
 
     # TODO move in separate module
     MARKETING_TYPES = {
@@ -99,7 +99,7 @@ module Is24
       response = {
         :oauth_token => CGI::unescape(body[0].split("=")[1]),
         :oauth_token_secret => CGI::unescape(body[1].split("=")[1]),
-        :redirect_uri => "http://rest.immobilienscout24.de/restapi/security/oauth/confirm_access?#{body[0]}"
+        :redirect_uri => "https://rest.immobilienscout24.de/restapi/security/oauth/confirm_access?#{body[0]}"
       }
     end
 
@@ -180,7 +180,7 @@ module Is24
         :url => API_ENDPOINT,
         :headers => {
           :accept =>  'application/json',
-          :user_agent => 'b\'nerd .media IS24 Ruby Client'}
+          :user_agent => 'b\'nerd .media IS24 Ruby Client fork'}
       }
 
       defaults.merge!( {
